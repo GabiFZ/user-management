@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS app_user(
     user_id BIGINT  UNIQUE NOT NULL DEFAULT nextval('seq_app_user'),
     fk_role BIGINT NOT NULL DEFAULT 1,
     name VARCHAR(65) NOT NULL,
-    username VARCHAR(45),
-    password VARCHAR(100),
+    username  VARCHAR(45) UNIQUE NOT NULL,
+    password VARCHAR(100)  NOT NULL,
     date_added TIMESTAMP NOT NULL DEFAULT NOW()::TIMESTAMP,
 
     CONSTRAINT app_user_pk PRIMARY KEY (user_id),
@@ -26,5 +26,5 @@ CREATE TABLE IF NOT EXISTS app_user(
 INSERT INTO app_user(name, username, password) VALUES ('Mike', 'MikeUser', 'pass123');
 INSERT INTO app_user(name, username, password) VALUES ('Alex', 'AlexUser', 'pass123');
 INSERT INTO app_user(name, username, password) VALUES ('Andreea', 'AndreeaUser', 'pass123');
-INSERT INTO app_user(fk_role, name, username, password) VALUES (2,'John', 'MikeUser', 'pass123');
-INSERT INTO app_user(fk_role, name, username, password) VALUES (3,'Jane', 'MikeUser', 'pass123');
+INSERT INTO app_user(fk_role, name, username, password) VALUES (2,'John', 'JohnUser', 'pass123');
+INSERT INTO app_user(fk_role, name, username, password) VALUES (3,'Jane', 'JaneUser', 'pass123');
