@@ -1,8 +1,8 @@
-
 db:
   name: user_management
   user: postgres
   password: 1q2w3e
+
 spring:
   application:
     name: student-management
@@ -12,6 +12,11 @@ spring:
     username: ${db.user}
     password: ${db.password}
     url: jdbc:postgresql://localhost:5432/${db.name}
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 
 server:
   port: 4000
