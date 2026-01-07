@@ -1,16 +1,14 @@
 package com.spring.studentmanagement.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+//@RequiredArgsConstructor
 @Builder
 @Table(name = "app_user", schema = "public")
 @Entity(name = "AppUser")
@@ -25,14 +23,23 @@ public class AppUser {
     @JoinColumn(name = "fk_role", nullable = false)
     private Role role;
 
-    @Column(name = "name", length = 65, nullable = false)
-    private String name;
+    @Column(name = "firstname", length = 65, nullable = false)
+    private String firstName;
 
-    @Column(name = "username", length = 45)
+    @Column(name = "lastname", length = 65, nullable = false)
+    private String lastName;
+
+    @Column(name = "username", length = 45,  nullable = false, unique = true)
     private String username;
 
-    @Column(name = "password", length = 100)
+    @Column(name = "password", length = 100, nullable = false)
     private String password;
+
+    @Column(name = "email", length = 65, nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "is_enabled", nullable = false, columnDefinition = "boolean DEFAULT true")
+    private Boolean isEnabled;
 
     private LocalDateTime dateAdded;
 

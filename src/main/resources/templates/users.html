@@ -15,32 +15,50 @@ xmlns:th="http://www.thymeleaf.org">
         <thead class="table-dark">
         <tr>
             <th>User id</th>
-            <th>Name</th>
+            <th>First Name</th>
+            <th>Last name</th>
             <th>Username</th>
             <th>Role name</th>
+            <th>Email</th>
             <th>Date added</th>
-            <th>Actions</th>
+            <th> Actions</th>
         </tr>
         </thead>
-        <tbody class="table-primary">
+        <tbody class="table-primary shadow-lg p-3 mb-5">
         <tr th:each="user : ${userList} ">
 
             <td th:text="${user.userId}"></td>
-            <td th:text="${user.name}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
             <td th:text="${user.username}"></td>
             <td th:text="${user.role.roleName}"></td>
-            <td th:text="${user.dateAdded}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${#temporals.format(user.dateAdded, 'dd-MM-yyyy | HH:mm:ss')}"></td>
+            <td class="d-flex align-middle justify-content-evenly pe-0 ps-0">
 
-            <td>
-                <button type="button" class="btn btn-success">Edit</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <a type="submit" th:href="@{'/users/' + ${user.userId}}" class="btn btn-primary">View</a>
+                <form method='post' th:action="@{/users}">
+                    <!-- In the above  case, this refers to the element that triggers the onsubmit event -->
+                    <input type="hidden" name="userId" th:value="${user.userId}"/>
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button type="button"
+                            onclick="deleteUserHandler(this)"
+                            th:attr="data-fullName=${user.firstName + ' ' + user.lastName}"
+                            class="btn btn-danger">Delete
+                    </button>
+                </form>
+
             </td>
+
+
         </tr>
         </tbody>
     </table>
 </section>
 
 
+<div th:replace="~{fragments/dialog :: confirm-dialog}"></div>
+<script th:src="@{/scripts/confirm-modal.js}"></script>
 
 </body>
 </html>

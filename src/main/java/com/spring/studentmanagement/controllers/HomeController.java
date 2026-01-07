@@ -34,6 +34,6 @@ public class HomeController {
         model.addAttribute("serverPort", this.serverPort);
         model.addAttribute("contextPath", this.contextPath);
         model.addAttribute("user", this.user);
-        return "home";
+        return "index";
     }
 }
