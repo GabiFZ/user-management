@@ -23,6 +23,10 @@ public class AppUser {
     @JoinColumn(name = "fk_role", nullable = false)
     private Role role;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_address", nullable = false, unique = true)
+    private Address address;
+
     @Column(name = "firstname", length = 65, nullable = false)
     private String firstName;
 

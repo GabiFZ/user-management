@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head-fragments :: head('Register')}">
+    <title></title>
+</head>
+
+<body style="background-color: #1c1c1c; display: flex; justify-content: center; align-items: center; height: 100vh;">
+
+<section class="container-auth-form p-4 shadow-lg rounded"
+         style="width: 400px; background-color: #2c2c2c;">
+
+    <!-- Welcome message -->
+    <h2 class="text-white text-center mb-3">Create your account</h2>
+
+    <form th:action="@{/auth/register}"
+          method="post"
+          th:object="${newUser}">
+
+        <h3 class="text-white text-center">Register</h3>
+        <hr>
+
+        <!-- Username -->
+        <div class="mb-3">
+            <label class="form-label text-white">Username</label>
+            <input type="text"
+                   th:field="*{username}"
+                   class="form-control"
+                   placeholder="Enter username">
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label class="form-label text-white">Email address</label>
+            <input type="email"
+                   th:field="*{email}"
+                   class="form-control"
+                   placeholder="Enter email">
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+            <label class="form-label text-white">Password</label>
+            <input type="password"
+                   th:field="*{password}"
+                   class="form-control"
+                   placeholder="Enter password">
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mb-3">
+            <label class="form-label text-white">Confirm password</label>
+            <input type="password"
+                   th:field="*{confirmPassword}"
+                   class="form-control"
+                   placeholder="Confirm password">
+        </div>
+
+        <!-- First name -->
+        <div class="mb-3">
+            <label class="form-label text-white">First name</label>
+            <input type="text"
+                   th:field="*{firstName}"
+                   class="form-control"
+                   placeholder="First name">
+        </div>
+
+        <!-- Last name -->
+        <div class="mb-3">
+            <label class="form-label text-white">Last name</label>
+            <input type="text"
+                   th:field="*{lastName}"
+                   class="form-control"
+                   placeholder="Last name">
+        </div>
+
+        <!-- Account type -->
+        <div class="mt-3 text-white">
+            <span class="me-2">Account type:</span>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input"
+                       type="radio"
+                       value="1"
+                       th:field="*{roleId}"
+                       style="accent-color: #0d6efd;">
+                <label class="form-check-label text-white">Basic user</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input"
+                       type="radio"
+                       value="2"
+                       th:field="*{roleId}"
+                       style="accent-color: #0d6efd;">
+                <label class="form-check-label text-white">Visitor</label>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Buttons -->
+        <div class="d-flex align-items-center justify-content-start mt-4">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a th:href="@{/auth/login}" class="link-warning text-decoration-none ms-4">
+                Back to login
+            </a>
+            <a th:href="@{/home}"
+               class="link-warning text-decoration-none ms-4">
+                Back
+            </a>
+        </div>
+
+    </form>
+</section>
+
+</body>
+</html>

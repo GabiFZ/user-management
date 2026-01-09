@@ -8,8 +8,17 @@ xmlns:th="http://www.thymeleaf.org">
     <nav th:replace="fragments/navbar-fragments :: header-navbar"></nav>
 </header>
 <section class="container">
+
+    <th:block th:if="${principal !=null}">
+        <div>
+            <h3>Hello, <span th:text="${principal.firstName + ' ' + principal.lastName}"></span> </h3>
+        </div>
+    </th:block>
     <h1>Users page</h1>
     <hr>
+    <form method="post" th:action="@{/users/logout}">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
 
     <table class="table table-hover table-stripped table-bordered">
         <thead class="table-dark">
