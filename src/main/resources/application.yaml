@@ -14,7 +14,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/${db.name}
 
   mvc:
-    hiddenmethod:
+    hidden-method:
       filter:
         enabled: true
 
@@ -22,3 +22,6 @@ server:
   port: 4000
   servlet:
     context-path: /user-management
+
+security:
+  enabled: true

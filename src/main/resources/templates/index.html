@@ -1,27 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head-fragments :: head('Home page')"></head>
-<body th:with="page='Home page'">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head-fragments :: head('Home page')}">
+    <title></title>
+</head>
 
-<header>
-    <nav th:replace="fragments/navbar-fragments :: header-navbar"></nav>
-</header>
+<body style="background-color: #1c1c1c; min-height: 100vh;">
 
-<section class="container">
-    <h1 th:text="${page}"></h1>
-    <hr>
+<div class="container d-flex flex-column align-items-center justify-content-center"
+     style="height: 100vh; text-align: center;">
 
-    <h2>Server details</h2>
-    <p>Server context path: <span th:text="${contextPath}"></span></p>
-    <p>Server port: <span th:text="${serverPort}"></span></p>
-    <hr>
+    <div class="mb-4">
+        <img th:src="@{/images/logo.png}" height="150" alt="user management logo">
+        <img th:src="@{/images/management.png}" height="150" alt="user management logo2">
+    </div>
 
-    <h2>Database details</h2>
-    <p>
-        You are connected to: <strong th:text="${dbName}"></strong> database with user:
-        <strong th:text="${user}"></strong>
-    </p>
-</section>
+    <div style="width: 300px; font-size: xx-large; font-weight: bold;">
+        <a th:href="@{/auth/login}"
+           class="text-decoration-none"
+           style="float:left; color: #68b3e3;">
+            LOGIN
+        </a>
+
+        <a th:href="@{/auth/register}"
+           class="text-decoration-none"
+           style="float:right; color:#68b3e3;">
+            SIGN UP
+        </a>
+    </div>
+
+</div>
 
 </body>
 </html>

@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS app_user(
     user_id BIGINT  UNIQUE NOT NULL DEFAULT nextval('seq_app_user'),
     fk_role BIGINT NOT NULL DEFAULT 1,
    -- name VARCHAR(65) NOT NULL,
+    fk_address BIGINT             NULL UNIQUE,
     firstname VARCHAR(65),
     lastname  VARCHAR(65),
     username  VARCHAR(45) UNIQUE NOT NULL,
@@ -24,11 +25,33 @@ CREATE TABLE IF NOT EXISTS app_user(
     date_added TIMESTAMP NOT NULL DEFAULT NOW()::TIMESTAMP,
 
     CONSTRAINT app_user_pk PRIMARY KEY (user_id),
-    CONSTRAINT app_user_fk_role FOREIGN KEY (fk_role) REFERENCES  role(role_id)
+    CONSTRAINT app_user_fk_role FOREIGN KEY (fk_role) REFERENCES  role(role_id),
+    CONSTRAINT app_user_fk_address FOREIGN KEY (fk_address) REFERENCES address (id)
 );
 
-INSERT INTO app_user(firstname, lastname,  username, password, email) VALUES ('Mike', 'Johnson','MikeUser', 'pass123', 'Mike@email.com');
-INSERT INTO app_user(firstname, lastname,  username, password, email) VALUES ('Alex', 'Marin','AlexUser', 'pass123', 'Alex@email.com');
-INSERT INTO app_user(firstname, lastname, username, password, email) VALUES ('Andreea', 'Marin','AndreeaUser', 'pass123', 'Andreea@email.com');
-INSERT INTO app_user(fk_role, firstname, lastname, username, password, email) VALUES (2,'John', 'Smith','JohnUser', 'pass123', 'John@email.com');
-INSERT INTO app_user(fk_role, firstname, lastname, username, password, email) VALUES (3,'Jane', 'Smith','JaneUser', 'pass123', 'Jane@email.com');
+INSERT INTO app_user (fk_role, fk_address, firstname, lastname, username, password, email, is_enabled, date_added)
+VALUES (3, 1, 'Alice', 'Smith', 'alicesmith', 'password789', 'alice.smith@example.com', FALSE, NOW());
+
+INSERT INTO app_user (fk_role, fk_address, firstname, lastname, username, password, email, is_enabled, date_added)
+VALUES (1, 2, 'Bob', 'Johnson', 'bobjohnson', 'passwordabc', 'bob.johnson@example.com', TRUE, NOW());
+
+INSERT INTO app_user (fk_role, fk_address, firstname, lastname, username, password, email, is_enabled, date_added)
+VALUES (2, NULL, 'Sarah', 'Lee', 'sarahlee', 'passworddef', 'sarah.lee@example.com', TRUE, NOW());
+
+INSERT INTO app_user (fk_role, fk_address, firstname, lastname, username, password, email, is_enabled, date_added)
+VALUES (3, 3, 'Mike', 'Brown', 'mikebrown', 'passwordxyz', 'mike.brown@example.com', TRUE, NOW());
+
+INSERT INTO app_user (fk_role, fk_address, firstname, lastname, username, password, email, is_enabled, date_added)
+VALUES (2, 4, 'Emily', 'Wong', 'emilywong', 'password123', 'emily.wong@example.com', FALSE, NOW());
+
+INSERT INTO app_user (fk_role, fk_address, firstname, lastname, username, password, email, is_enabled, date_added)
+VALUES (1, NULL, 'David', 'Kim', 'davidkim', 'password456', 'david.kim@example.com', TRUE, NOW());
+
+INSERT INTO app_user (fk_role, fk_address, firstname, lastname, username, password, email, is_enabled, date_added)
+VALUES (3, NULL, 'Julia', 'Chen', 'juliachen', 'password789', 'julia.chen@example.com', TRUE, NOW());
+
+INSERT INTO app_user (fk_role, fk_address, firstname, lastname, username, password, email, is_enabled, date_added)
+VALUES (1, 5, 'Ryan', 'Garcia', 'ryangarcia', 'passwordabc', 'ryan.garcia@example.com', FALSE, NOW());
+
+INSERT INTO app_user (fk_role, fk_address, firstname, lastname, username, password, email, is_enabled, date_added)
+VALUES (3, null, 'Gabi', 'Ion', 'Gabi2005', '$2a$10$ls59iekZoEyszbC3XRqoB.vyvsM8oV2n.YJxb5g8bVthF4C5Xkhw2', 'gabi.ion@outlook.com', TRUE, NOW());

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,5 +54,13 @@ public class UserServiceImpl implements UserService {
     public void deleteUserById(Long userId) {
         userRepository.deleteById(userId);
 
+
+
+    }
+
+    @Override
+    public AppUser saveUser(AppUser user){
+        user.setDateAdded(LocalDateTime.now());
+        return userRepository.save(user);
     }
 }
