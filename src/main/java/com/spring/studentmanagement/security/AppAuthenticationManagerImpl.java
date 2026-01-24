@@ -39,7 +39,7 @@ public class AppAuthenticationManagerImpl implements AppAuthManager, HandlerInte
             throw new AuthenticationException(INVALID_CREDENTIALS);
         }
 
-        if (!user.getIsEnabled()) {  // Whitout get
+        if (!user.getIsEnabled()) {  // get
             throw new AuthenticationException(ACCOUNT_DISABLED);
         }
 

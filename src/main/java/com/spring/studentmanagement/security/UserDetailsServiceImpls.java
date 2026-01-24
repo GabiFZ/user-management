@@ -8,6 +8,9 @@ import com.spring.studentmanagement.security.utils.Security;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Security
 @RequiredArgsConstructor
 @Slf4j
@@ -17,7 +20,13 @@ public class UserDetailsServiceImpls implements AppUserDetailsService {
 
     @Override
     public AppUser loadByUsernameOrEmail(String usernameOrEmail) throws AuthenticationException {
-        return this.userRepository.findBYUsernameOrEmail(usernameOrEmail)
+        return this.userRepository.findByUsernameOrEmail(usernameOrEmail)
                 .orElseThrow(() -> new AuthenticationException(USERNAME_NOT_FOUND));
+
+
     }
+
+    public static Map<String,Object> dataMap = new HashMap<>();
+
+
 }

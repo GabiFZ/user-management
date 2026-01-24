@@ -5,9 +5,7 @@ import com.spring.studentmanagement.models.Role;
 import lombok.Data;
 import lombok.ToString;
 
-/**
- * Created at 4/25/2023 by Darius
- **/
+
 @Data
 public class SignUpRequestDto {
 

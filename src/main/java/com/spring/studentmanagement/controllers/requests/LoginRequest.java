@@ -3,9 +3,8 @@ package com.spring.studentmanagement.controllers.requests;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.Builder;
 
-/**
- * Created at 4/25/2023 by Darius
- **/
+
+
 @Builder
 public record LoginRequest(String usernameOrEmail, String password) {
 
