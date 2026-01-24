@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static com.spring.studentmanagement.security.utils.SecurityConstants.USER_PRINCIPAL;
@@ -21,7 +22,7 @@ import static com.spring.studentmanagement.security.utils.SecurityConstants.USER
 import com.spring.studentmanagement.security.interfaces.SecurityService;
 
 @Security
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 @Slf4j
 public class SecurityServiceImpl implements SecurityService {
 

@@ -1,27 +1,39 @@
 db:
-  name: user_management
   user: postgres
   password: 1q2w3e
+  name: user_management
 
 spring:
   application:
     name: student-management
 
   datasource:
-    driver-class-name: org.postgresql.Driver
-    username: ${db.user}
-    password: ${db.password}
-    url: jdbc:postgresql://localhost:5432/${db.name}
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/${db.name}
+      username: ${db.user}
+      password: ${db.password}
 
-  mvc:
-    hidden-method:
-      filter:
-        enabled: true
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: ${spring.jpa.database-platform}
+    open-in-view: true
+    mvc:
+      hidden-method:
+        filter:
+          enabled: true
 
 server:
   port: 4000
   servlet:
     context-path: /user-management
+  error:
+    path: /errors/error-500
 
 security:
   enabled: true

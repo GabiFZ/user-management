@@ -6,8 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.spring.studentmanagement.utils.EntityFactoryTestUtils.getUserEntityList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,5 +36,9 @@ public class UserServiceImplTest {
         assertEquals(expectedUsers, actualUsers, "The returned users should match");
         verify(userRepository, times(1)).findAll();
 
+
+
     }
+
+
 }

@@ -5,10 +5,11 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
-@NoArgsConstructor
-//@RequiredArgsConstructor
+//@NoArgsConstructor
+@RequiredArgsConstructor
 @Builder
 @Table(name = "app_user", schema = "public")
 @Entity(name = "AppUser")
@@ -24,7 +25,7 @@ public class AppUser {
     private Role role;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_address", nullable = false, unique = true)
+    @JoinColumn(name = "fk_address", nullable = true, unique = true)
     private Address address;
 
     @Column(name = "firstname", length = 65, nullable = false)

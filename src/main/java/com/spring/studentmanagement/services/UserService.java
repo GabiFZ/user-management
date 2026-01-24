@@ -14,7 +14,7 @@ public interface UserService {
     //AppUser findByUsername(String username);
 
     // Security
-  AppUser saveUser(AppUser user); // save the new user (sign-up)
-   // AppUser findByUsernameOrEmail(String usernameOrEmail); // used by  login
+    AppUser saveUser(AppUser user); // save the new user (sign-up)
+   // AppUser findByUsernameOrEmail(String usernameOrEmail); // used by login
 
 }

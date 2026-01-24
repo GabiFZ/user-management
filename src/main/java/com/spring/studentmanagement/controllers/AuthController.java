@@ -6,6 +6,7 @@ import com.spring.studentmanagement.exceptions.AuthenticationException;
 import com.spring.studentmanagement.models.AppUser;
 import com.spring.studentmanagement.security.interfaces.SecurityService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -75,4 +76,10 @@ public class AuthController {
         }
 
     }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        securityService.logout(request); // Logout
+        return "redirect:/home";
+    }
+
 }
